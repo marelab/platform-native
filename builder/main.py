@@ -20,6 +20,21 @@ from SCons.Script import COMMAND_LINE_TARGETS, AlwaysBuild, Default, DefaultEnvi
 
 env = DefaultEnvironment()
 
+env.Replace(
+    _BINPREFIX="",
+    AR="aarch64-linux-gnu-ar",
+    AS="aarch64-linux-gnu-as",
+    CC="aarch64-linux-gnu-gcc",
+    CXX="aarch64-linux-gnu-g++",
+    GDB="aarch64-linux-gnu-gdb",
+    ld="aarch64-linux-gnu-ld",
+    OBJCOPY="aarch64-linux-gnu-objcopy",
+    RANLIB="aarch64-linux-gnu-ranlib",
+    SIZETOOL="aarch64-linux-gnu-size",
+    SIZEPRINTCMD='$SIZETOOL $SOURCES'
+)
+
+
 # Remove generic C/C++ tools
 for k in ("CC", "CXX"):
     if k in env:
